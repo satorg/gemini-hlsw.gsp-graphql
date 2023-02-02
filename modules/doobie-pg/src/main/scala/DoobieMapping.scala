@@ -163,6 +163,6 @@ trait DoobieMappingLike[F[_]] extends Mapping[F] with SqlMappingLike[F] {
       new Read(codecs.map { case (_, (m, n)) => (m.get, if(n) Nullable else NoNulls) }, unsafeGet)
     }
 
-    fragment.query[Array[Any]](mkRead(codecs)).to[Vector].transact(transactor)
+    fragment.queryWithLogHandler[Array[Any]](_root_.doobie.util.log.LogHandler.jdkLogHandler)(mkRead(codecs)).to[Vector].transact(transactor)
   }
 }

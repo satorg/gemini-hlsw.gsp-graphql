@@ -19,7 +19,7 @@ import org.typelevel.log4cats.slf4j.Slf4jLogger
 
 trait WorldMapping[F[_]] extends DoobieMapping[F] {
   // #db_tables
-  object country extends TableDef("country") {
+  object country extends TableDef("demo.country") {
     val code           = col("code", Meta[String])
     val name           = col("name", Meta[String])
     val continent      = col("continent", Meta[String])
@@ -38,7 +38,7 @@ trait WorldMapping[F[_]] extends DoobieMapping[F] {
     val code2          = col("code2", Meta[String])
   }
 
-  object city extends TableDef("city") {
+  object city extends TableDef("demo.city") {
     val id          = col("id", Meta[Int])
     val countrycode = col("countrycode", Meta[String])
     val name        = col("name", Meta[String])
@@ -46,7 +46,7 @@ trait WorldMapping[F[_]] extends DoobieMapping[F] {
     val population  = col("population", Meta[Int])
   }
 
-  object countrylanguage extends TableDef("countrylanguage") {
+  object countrylanguage extends TableDef("demo.countrylanguage") {
     val countrycode = col("countrycode", Meta[String])
     val language = col("language", Meta[String])
     val isOfficial = col("isOfficial", Meta[Boolean])
